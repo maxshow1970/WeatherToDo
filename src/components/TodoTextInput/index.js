@@ -16,7 +16,6 @@ export default class TodoTextInput extends React.Component {
 
   componentDidMount() {
     this.input.focus();
-    // ReactDom.findDOMNode(this).focus();
   }
 
   handleBlur = () => {

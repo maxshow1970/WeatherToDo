@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchWeather } from "../../modules/weather/actionsWeather";
+import { fetchWeather } from "../../actions/actions";
 
 export class WeatherDisplay extends Component {
   constructor(props) {

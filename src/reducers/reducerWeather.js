@@ -1,4 +1,4 @@
-import * as types from "./actionTypesWeather";
+import * as actionTypes from "../actions/actionTypes";
 
 const initialStateWeather = {
   temp: 0,
@@ -14,12 +14,12 @@ const initialStateWeather = {
 const todoWeather = (stateWeather = initialStateWeather, actionWeather) => {
   const { type, payload } = actionWeather;
   switch (type) {
-    case types.FETCH_WEATHER_REQUEST:
+    case actionTypes.FETCH_WEATHER_REQUEST:
       return {
         ...initialStateWeather,
         weatherLoading: true
       };
-    case types.FETCH_WEATHER_SUCCESS:
+    case actionTypes.FETCH_WEATHER_SUCCESS:
       return {
         ...stateWeather,
         weatherLoading: false,
@@ -31,7 +31,7 @@ const todoWeather = (stateWeather = initialStateWeather, actionWeather) => {
         picture: payload.weather[0].icon,
         weatherFetchError: ""
       };
-    case types.FETCH_WEATHER_FAILURE:
+    case actionTypes.FETCH_WEATHER_FAILURE:
       return {
         ...initialStateWeather,
         weatherFetchError: payload

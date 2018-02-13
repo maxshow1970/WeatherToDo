@@ -16,7 +16,7 @@ import {
   activeViewItems,
   completedViewItems,
   editItem
-} from "../../modules/todo/actions";
+} from "../../actions/actions";
 
 class TodoApp extends Component {
   constructor(props, context) {

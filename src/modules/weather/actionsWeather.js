@@ -1,23 +1,23 @@
 import * as types from "./actionTypesWeather";
 import axios from "axios";
 
-const fetchPostsRequest = () => ({
-  type: types.FETCH_POSTS_REQUEST
+const fetchWeatherRequest = () => ({
+  type: types.FETCH_WEATHER_REQUEST
 });
 
-const fetchPostsSuccess = payload => ({
-  type: types.FETCH_POSTS_SUCCESS,
+const fetchWeatherSuccess = payload => ({
+  type: types.FETCH_WEATHER_SUCCESS,
   payload
 });
 
-const fetchPostsFailure = payload => ({
-  type: types.FETCH_POSTS_FAILURE,
+const fetchWeatherFailure = payload => ({
+  type: types.FETCH_WEATHER_FAILURE,
   payload
 });
 
-export const fetchPosts = () => {
+export const fetchWeather = () => {
   return dispatch => {
-    dispatch(fetchPostsRequest());
+    dispatch(fetchWeatherRequest());
     axios
       .get("https://ipapi.co/json/")
       .then(res => {
@@ -30,14 +30,14 @@ export const fetchPosts = () => {
               "&units=metric&cnt=1&appid=87ce5c597f2ecbd9badcf8169e79a874"
           )
           .then(function(response) {
-            dispatch(fetchPostsSuccess(response.data));
+            dispatch(fetchWeatherSuccess(response.data));
           })
           .catch(error => {
-            dispatch(fetchPostsFailure(error.message));
+            dispatch(fetchWeatherFailure(error.message));
           });
       })
       .catch(error => {
-        dispatch(fetchPostsFailure(error.message));
+        dispatch(fetchWeatherFailure(error.message));
       });
   };
 };

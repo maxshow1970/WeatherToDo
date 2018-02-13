@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import {
-  // selectLocation,
-  fetchPosts
-} from "../../modules/todo/actionsWeather";
+import { fetchWeather } from "../../modules/weather/actionsWeather";
 
 export class WeatherDisplay extends Component {
   constructor(props) {
@@ -13,7 +10,7 @@ export class WeatherDisplay extends Component {
 
   componentDidMount() {
     const { actions } = this.props;
-    actions.fetchPosts();
+    actions.fetchWeather();
   }
 
   render() {
@@ -29,7 +26,7 @@ export class WeatherDisplay extends Component {
       weatherFetchError
     } = this.props.todoWeather;
 
-    if (weatherFetchError !== "") return <div>weatherFetchError</div>;
+    if (weatherFetchError) return <div>weatherFetchError</div>;
 
     const iconUrl = `http://openweathermap.org/img/w/${picture}.png`;
 
@@ -38,10 +35,7 @@ export class WeatherDisplay extends Component {
         {/* hggggggg */}
         <h1>
           {name}
-          <img
-            src={iconUrl}
-            // alt={}
-          />
+          <img src={iconUrl} />
         </h1>
         <p>Current: {temp}°</p>
         <p>High: {temp_max}°</p>
@@ -56,7 +50,7 @@ const mapDispatchToProps = dispatch => {
   return {
     actions: bindActionCreators(
       {
-        fetchPosts
+        fetchWeather
       },
       dispatch
     )

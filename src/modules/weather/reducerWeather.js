@@ -14,19 +14,12 @@ const initialStateWeather = {
 const todoWeather = (stateWeather = initialStateWeather, actionWeather) => {
   const { type, payload } = actionWeather;
   switch (type) {
-    case types.FETCH_POSTS_REQUEST:
+    case types.FETCH_WEATHER_REQUEST:
       return {
-        ...stateWeather,
-        weatherLoading: true,
-        temp: 0,
-        temp_max: 0,
-        temp_min: 0,
-        speed: 0,
-        name: "Kharkov",
-        picture: "",
-        weatherFetchError: ""
+        ...initialStateWeather,
+        weatherLoading: true
       };
-    case types.FETCH_POSTS_SUCCESS:
+    case types.FETCH_WEATHER_SUCCESS:
       return {
         ...stateWeather,
         weatherLoading: false,
@@ -38,16 +31,9 @@ const todoWeather = (stateWeather = initialStateWeather, actionWeather) => {
         picture: payload.weather[0].icon,
         weatherFetchError: ""
       };
-    case types.FETCH_POSTS_FAILURE:
+    case types.FETCH_WEATHER_FAILURE:
       return {
-        ...stateWeather,
-        weatherLoading: false,
-        temp: 0,
-        temp_max: 0,
-        temp_min: 0,
-        speed: 0,
-        name: "Kharkov",
-        picture: "",
+        ...initialStateWeather,
         weatherFetchError: payload
       };
     default:

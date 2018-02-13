@@ -55,7 +55,6 @@ class TodoApp extends Component {
   render() {
     const ToDoListProps = {
       entries: this.props.todo.itemsFiltered,
-      // state : this.state.items,
       deleteItemS: this.props.actions.deleteItem,
       completedTaskS: this.onCompeted,
 
